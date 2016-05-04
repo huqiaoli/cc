@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+/* CSS Document */
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;vertical-align:middle;}
+body{font-size:12px;font-family:Arial, Helvetica, sans-serif;  text-align:center; margin:0 auto; background:#000;}
+
+a{color:#333;text-decoration:none;}
+a:hover{color:#ef9b11; text-decoration:underline;}
+
+.main { width:950px; padding-top:220px; margin:0 auto;}
+
+.main .menu {POSITION: relative; HEIGHT: 70px; TEXT-ALIGN: center}
+
+.main .menu UL.lang {
+	DISPLAY: inline
+}
+.main .menu UL.lang LI {
+	PADDING-RIGHT: 17px; DISPLAY: inline; PADDING-LEFT: 16px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; ZOOM: 1; POSITION: relative
+}
+.main .menu UL.lang LI.ext {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+.main .menu UL.lang LI SPAN {
+	CURSOR: pointer; COLOR: #fff; TEXT-DECORATION: none
+}
+.main .menu UL.lang LI A {
+	CURSOR: pointer; COLOR: #fff; TEXT-DECORATION: none
+}
+.main .menu UL.lang LI UL {
+	PADDING-RIGHT: 0px; DISPLAY: none; PADDING-LEFT: 0px; Z-INDEX: 100; LEFT: 0px; PADDING-BOTTOM: 3px; OVERFLOW: hidden; BOTTOM: 17px; PADDING-TOP: 10px; POSITION: absolute; BACKGROUND-COLOR: #000
+}
+.main .menu UL.lang LI UL LI {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.main .menu UL.lang LI UL LI A {
+	CLEAR: both; PADDING-RIGHT: 16px; DISPLAY: block; PADDING-LEFT: 16px; PADDING-BOTTOM: 0px; COLOR: #535353; LINE-HEIGHT: 20px; PADDING-TOP: 0px; WHITE-SPACE: nowrap; HEIGHT: 20px
+}
+.main .menu UL.lang LI.disable A {
+	COLOR: #535353
+}
+.main .menu UL.lang LI.disable SPAN {
+	COLOR: #535353
+}
+.main .menu UL.lang LI:hover A {
+	COLOR: #fff
+}
+.main .menu UL.lang LI:hover SPAN {
+	COLOR: #fff
+}
+.main .menu UL.lang LI:hover UL LI A {
+	COLOR: #535353
+}
+.main .menu UL.lang LI UL LI A:hover {
+	COLOR: #fff
+}
+.main .menu UL.lang LI:hover UL {
+	DISPLAY: block
+}
+
