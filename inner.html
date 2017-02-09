@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<style>
+  
+</style>   
+</head>
+<body>
+<div id="demo">
+    <!-- 这里是注释 -->
+    <div>子节点一</div>
+    <div>子节点二</div>
+    <div>子节点三</div>
+</div>
+<script type="text/javascript">
+  document.getElementById("demo").onclick=function(){
+    var childArr=getChildNodes(this);
+    alert("元素子节点的个数为："+childArr.length)
+  }
+  var getChildNodes=function(ele){
+   var childArr=ele.children || ele.childNodes,
+         childArrTem=new Array();  //  临时数组，用来存储符合条件的节点
+    for(var i=0,len=childArr.length;i<len;i++){
+        if(childArr[i].nodeType==1){
+            childArrTem.push(childArr[i]);
+        }
+    }
+    return childArrTem;
+}
+</script>
+</body>
+</html>
+
+ 
