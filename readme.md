@@ -3,13 +3,21 @@
 children只返回HTML节点，甚至不返回文本节点，虽然不是标准的DOM属性，但是得到了几乎所有浏览器的支持。
 
 语法：
-    nodeObject.children
+   
+```
+nodeObject.children
+```
+
 其中，nodeObject 为节点对象（元素节点），返回值为所有子节点的集合（数组）。
 
 注意：在IE中，children包含注释节点。
 
 例如，获取 id="demo" 的节点的所有子节点：
+
+```
 document.getElementById("demo").children;
+```
+
 
 一般情况下，我们是希望获取元素节点，可以通过 nodeType 属性来进行刷选，nodeType==1 的节点为元素节点。
 
@@ -18,13 +26,17 @@ document.getElementById("demo").children;
 
 
 为了提高代码的兼容性，避免个别浏览器不支持 children 或 childNodes 的情况，可以这样编写代码：
+
+```
 var childArr=ele.children || ele.childNodes
+```
 
 
 
 
 
-javascript中children和childNodes的区别
+
+#####  javascript中children和childNodes的区别
 
 ###### 1：childNodes属性:
 标准的，它返回指定元素的子元素集合，包括html节点，所有属性，文本。可以通过nodeType来判断是哪种类型的节点，只有当nodeType==1时才是元素节点，2是属性节点，3是文本节点。如果代码中有换行、空格就会增加文本节点，这样用它来返回真正的子节点就会不准确，具体见下面的例子。
