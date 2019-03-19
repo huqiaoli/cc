@@ -26,26 +26,48 @@ var childArr=ele.children || ele.childNodes
 
 javascript中children和childNodes的区别
 
-1，childNodes：它是标准属性，它返回指定元素的子元素集合，包括HTML节点，所有属性，文本节点。
-可以通过nodeType来判断是哪种类型的节点，只有当nodeType==1时才是元素节点，2是属性节点，3是文本节点。
+###### 1：childNodes属性:
+标准的，它返回指定元素的子元素集合，包括html节点，所有属性，文本。可以通过nodeType来判断是哪种类型的节点，只有当nodeType==1时才是元素节点，2是属性节点，3是文本节点。如果代码中有换行、空格就会增加文本节点，这样用它来返回真正的子节点就会不准确，具体见下面的例子。
 
-有些人错误的使用()去取该集合元素，下表列出各浏览器对childNodes(i)的支持情况：
-IE6/7/8/Safari/Chrome/Opera	IE9/Firefox
-childNodes(i)	支持	不支持
+除了IE9和Firefox，其他浏览器都支持通过childNodes[i]获取第i个子节点。
 
-有时候需要获取指定元素的第一个HTML子节点（非属性/文本节点），最容易想到的就是firstChild 属性。代码中第一个HTML节点前如果有换行，空格，那么firstChild返回的就不是你想要的了。可以使用nodeType来判断下。
+如果一定要用这个方法（毕竟他是W3C标准），就要增加一个判断子节点类型过程：
 
+
+```
 function getFirst(elem){
     for(var i=0,e;e=elem.childNodes[i++];){
         if(e.nodeType==1)
             return e;
     }
 }
+```
 
-2，children：非标准属性，它返回指定元素的子元素集合。
 
-但它只返回HTML节点，甚至不返回文本节点，虽然不是标准的DOM属性，但它和innerHTML方法一样，得到了几乎所有浏览器的支持。
+###### 2：children属性:
+非标准的，它返回指定元素的子元素集合。经测试，它只返回html节点，甚至不返回文本节点。且在所有浏览器下表现惊人的一致。和childNodes一样，在firefox下不支持()取集合元素。因此如果想获取指定元素的第一个html节点，可以使用children[0]来替代上面的getFirst函数。需注意children在IE中包含注释节点。
 
-和childNodes 一样，在Firefox下不支持()取集合元素。因此如果想获取指定元素的第一个HTML节点，可以使用children[0]来替代上面的getFirst函数。
+返回指定元素的子元素集合，只包括元素节点，不包括文本节点。
 
-这里需要注意的是children在IE中包含注释节点。
+除了IE9和Firefox，其他浏览器都支持通过children[i]获取第i个子节点。
+
+注意：children在IE中包含注释节点。
+
+###### 3、firstChild属性：
+
+
+获取指定元素的第一个子节点，可以是元素节点，也可以是文本节点。
+
+问题：若父元素与第一个子元素之间存在空白节点，firstChild获取到的将是空白节点而不是第一个子元素。
+
+解决：使用firstElementChild属性。
+
+问题：IE6/7/8中不支持firstElementChild属性。
+
+解决：使用children[0]属性。
+
+###### 4、firstElementChild属性：
+
+
+
+获取指定元素的第一个子元素节点，不会检测到文本节点。
